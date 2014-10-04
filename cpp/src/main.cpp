@@ -13,12 +13,11 @@ int main(int argc, char *argv[])
     rlp.rlim_cur = rlp.rlim_max;
     setrlimit(RLIMIT_STACK, &rlp);
 
+    Maze<11> maze(argv[1]);
 
-    Maze<9> maze(argv[1]);
+    Maze<11>::path_type path;
 
-    Maze<9>::path_type path;
-
-    maze.findPath(0,4,0, 6,2,6, path);
+    maze.findPath(1,5,1, 7,3,7, path);
 
     for (auto i : path) {
         std::cout << std::get<0>(i) << ","

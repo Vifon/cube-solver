@@ -2,17 +2,10 @@
 
 #include <iostream>
 
-#include <sys/resource.h>
-
 #include "maze.hpp"
 
 int main(int argc, char *argv[])
 {
-    rlimit rlp;
-    getrlimit(RLIMIT_STACK, &rlp);
-    rlp.rlim_cur = rlp.rlim_max;
-    setrlimit(RLIMIT_STACK, &rlp);
-
     Maze<11> maze(argv[1]);
 
     Maze<11>::path_type path;

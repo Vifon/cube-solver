@@ -1,4 +1,4 @@
-(defvar *maze-size* 11)
+(defconstant *maze-size* 11)
 
 (defstruct maze
   front
@@ -62,15 +62,6 @@
 
 
 (format t "~{~a~%~}"
-        ;; Subtract the auxiliary walls' coords to match the results with the C++ version.
-        (mapcar #'(lambda (point)
-                    (destructuring-bind (x y z)
-                        point
-                      (list (1- x)
-                            (1- y)
-                            (1- z))))
-                (find-path-in-maze (load-walls "input")
-                                   ;; Coords +1 due to the auxiliary walls.
-                                   ;; TODO: Add the walls to the C++ version to simplify it?
-                                   '(1 5 1)
-                                   '(7 3 7))))
+        (find-path-in-maze (load-walls "input")
+                           '(1 5 1)
+                           '(7 3 7)))

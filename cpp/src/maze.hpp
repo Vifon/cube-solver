@@ -34,7 +34,7 @@ class Maze
         for (size_t z = 0; z < N; ++z) {
             for (size_t y = 0; y < N; ++y) {
                 for (size_t x = 0; x < N; ++x) {
-                    layout_(z,y,x) =
+                    layout_(x,y,z) =
                         walls[0][y][x] ||
                         walls[1][y][z] ||
                         walls[2][N-z-1][x];

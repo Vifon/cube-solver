@@ -14,6 +14,7 @@ class Matrix3D
   public:
     Matrix3D();
     Matrix3D(const T& initial_value);
+    Matrix3D(const Matrix3D<T,N>& orig);
 
     T& operator()(size_t x, size_t y, size_t z);
     const T& operator()(size_t x, size_t y, size_t z) const;
@@ -37,6 +38,14 @@ Matrix3D<T,N>::Matrix3D(const T& initial_value)
     : array_(new std::array<T,N*N*N>)
 {
     array_->fill(initial_value);
+}
+
+////////////////////////////////////////
+
+template <typename T, size_t N>
+Matrix3D<T,N>::Matrix3D(const Matrix3D<T,N>& orig)
+    : array_(new std::array<T,N*N*N>(*orig.array_))
+{
 }
 
 ////////////////////////////////////////
